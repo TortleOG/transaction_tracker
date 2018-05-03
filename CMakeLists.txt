@@ -9,7 +9,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 include_directories(include)
 
 # Get all .cpp files
-file(GLOB SOURCES "src/*.cpp")
+file(GLOB SOURCES "src/*.cpp" "include/*.h")
 
 add_executable(tt ${SOURCES})
 
