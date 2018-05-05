@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <ctime>
+#include <time.h>
 #include <iomanip>
 
 struct transaction {
