@@ -18,8 +18,8 @@ int main() {
 	int last_id = -1;
 
 	transaction transac = create_transact(last_id);
-	
-		// Print transaction
+
+	// Print transaction
 	print_transact(std::cout, transac);
 
 	return 0;
@@ -42,6 +42,9 @@ std::string get_date() {
 	return date;
 }
 
+/**
+ * Creates a new transaction.
+ */
 transaction create_transact(const int& last_id) {
 	transaction t;
 	std::cout << "NEW TRANSACTION\n" + std::string(15, '=');
