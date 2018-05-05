@@ -12,7 +12,7 @@ struct transaction {
 
 std::string get_date();
 transaction create_transact(const int&);
-void print_transact(std::ostream&, const transaction&);
+void print_transact(const transaction&);
 
 int main() {
 	int last_id = -1;
@@ -20,7 +20,7 @@ int main() {
 	transaction transac = create_transact(last_id);
 
 	// Print transaction
-	print_transact(std::cout, transac);
+	print_transact(transac);
 
 	return 0;
 }
@@ -47,7 +47,7 @@ std::string get_date() {
  */
 transaction create_transact(const int& last_id) {
 	transaction t;
-	std::cout << "NEW TRANSACTION\n" + std::string(15, '=');
+	std::cout << "NEW TRANSACTION\n" + std::string(15, '=') + '\n';
 
 	std::cout << "(Title) ";
 	std::getline(std::cin, t.title);
@@ -57,16 +57,18 @@ transaction create_transact(const int& last_id) {
 
 	t.id = last_id + 1;
 
-	t.date = get_date();
+	t.date_created = get_date();
+
+	return t;
 }
 
 /**
  * Prints out the data of a given transaction.
  */
-void print_transact(std::ostream& os, const transaction& t) {
-	os << "\n\nTRANSACTION (#" << t.id << ") : "
-		 << "\nNAME: " << t.title
-		 << "\nAMOUNT: " << t.amount
-		 << "\nDATE_CREATED: " << t.date_created;
+void print_transact(const transaction& t) {
+	std::cout << "\n\nTRANSACTION (#" << t.id << ") : " 
+						<< "\nNAME: " << t.title
+						<< "\nAMOUNT: " << t.amount
+						<< "\nDATE_CREATED: " << t.date_created;
 }
 
