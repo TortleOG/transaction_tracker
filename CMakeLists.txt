@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.8.9)
 
 project(transaction_tracker)
 
+set(CMAKE_CXX_FLAGS "-W -Wall -Wextra -Werror")
+
 # Set variables
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 
