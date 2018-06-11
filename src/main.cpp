@@ -1,20 +1,20 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "transaction.h"
+#include "menu.h"
 
 int main() {
-	const std::string header = "WELCOME TO TRANSACTION TRACKER";
-	const std::string sep(header.size(), '=');
+	tt::Menu menu { "WELCOME TO TRANSACTION TRACKER" };
 
-	std::cout << header << '\n' << sep
-		<< "(a) View transactions\n" << "(b) Add transaction\n"
-		<< "(c) Remove last transaction\n" << "(d) View net gain/loss\n" << sep;
+	menu
+		.add("View transactions")
+		.add("Add transaction")
+		.add("Remove last transaction")
+		.add("View net gain/loss");
 
-	tt::Transaction transact { 1, "mcdonalds", 20.f };
-
-	transact.print();
+	menu.print();
 
 	return 0;
 }
-
