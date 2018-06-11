@@ -3,12 +3,12 @@
 #include <string>
 #include <iostream>
 
-tt::Menu::Menu(std::string title) {
+tt::Menu::Menu(const std::string& title) {
   this->title = title;
   this->sep = std::string(title.size(), '=');
 }
 
-tt::Menu::Menu(std::string title, char sep) {
+tt::Menu::Menu(const std::string& title, const char& sep) {
   this->title = title;
   this->sep = (title.size(), sep);
 }

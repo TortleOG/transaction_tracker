@@ -20,8 +20,8 @@ class Menu {
     std::vector<menu_opt> opts;
 
   public:
-    Menu(std::string);
-    Menu(std::string, char);
+    Menu(const std::string&);
+    Menu(const std::string&, const char&);
 
     // Getters
     inline std::string get_sep() const { return sep; }
