@@ -6,15 +6,15 @@
 #include "menu.h"
 
 int main() {
-	tt::Menu menu { "WELCOME TO TRANSACTION TRACKER" };
+  tt::Menu menu { "WELCOME TO TRANSACTION TRACKER" };
 
-	menu
-		.add("View transactions")
-		.add("Add transaction")
-		.add("Remove last transaction")
-		.add("View net gain/loss");
+  menu
+    .add("View transactions")
+    .add("Add transaction")
+    .add("Remove last transaction")
+    .add("View net gain/loss");
 
-	menu.print();
+  menu.print();
 
-	return 0;
+  return 0;
 }
