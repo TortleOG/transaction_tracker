@@ -28,3 +28,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - [[#e1b1eac](https://github.com/TortleOG/transaction_tracker/commit/e1b1eaca70b4bf111999cdde9e74454aa9548f28)] Moved get_date into header file. (tortleog)
 - [[#e1b1eac](https://github.com/TortleOG/transaction_tracker/commit/e1b1eaca70b4bf111999cdde9e74454aa9548f28)] Changed get_date to create_date. (tortleog)
 - [[#ba144cb](https://github.com/tortleog/transaction_tracker/commit/ba144cb4acae9f23d1c4be77a76ccdf85a9ceda8)] Changed menu parameters to pass by reference. (tortleog)
+- [[#6b83068](https://github.com/tortleog/transaction_tracker/commit/6b83068be93aee6ba3742ecb3ae87f6bdeb4825d)] Updated Menu#add to allow for an optional callback parameter on menu options. (tortleog)
