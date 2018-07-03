@@ -2,6 +2,7 @@
 
 #include <string>
 #include <iostream>
+#include <functional>
 
 tt::Menu::Menu(const std::string& title) {
   this->title = title;
@@ -23,8 +24,12 @@ void tt::Menu::print() {
   std::cout << this->sep << '\n';
 }
 
-tt::Menu &tt::Menu::add(const std::string& name) {
-  menu_opt opt { this->last_sel, name };
+tt::Menu& tt::Menu::add(const std::string& name) {
+  return add(name, nullptr);
+}
+
+tt::Menu& tt::Menu::add(const std::string& name, const std::function<void()>& cb) {
+  menu_opt opt { this->last_sel, name, cb };
   this->opts.push_back(opt);
   this->last_sel++;
   return *this;

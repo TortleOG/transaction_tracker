@@ -4,12 +4,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <functional>
 
 namespace tt {
 
 struct menu_opt {
   char sel;
   std::string name;
+  std::function<void()> cb;
 };
 
 class Menu {
@@ -30,7 +32,8 @@ class Menu {
 
     // Methods
     void print();
-    Menu &add(const std::string&);
+    Menu& add(const std::string&);
+    Menu& add(const std::string&, const std::function<void()>&);
 };
 
 } // namespace tt
