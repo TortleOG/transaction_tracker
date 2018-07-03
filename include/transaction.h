@@ -25,6 +25,6 @@ class Transaction {
     void print();
 };
 
-}
+} // namespace tt
 
 #endif
