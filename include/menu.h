@@ -22,6 +22,7 @@ class Menu {
     std::vector<menu_opt> opts;
 
   public:
+    Menu();
     Menu(const std::string&);
     Menu(const std::string&, const char&);
 
@@ -30,6 +31,10 @@ class Menu {
     inline std::string get_title() const { return title; }
     inline std::vector<menu_opt> get_opts() const { return opts; }
 
+    // Setters
+    Menu& set_sep(const char& c) { sep = std::string(title.size(), c); return *this; };
+    Menu& set_title(const std::string& t) { title = t; return *this; };
+
     // Methods
     void print();
     Menu& add(const std::string&);
@@ -37,5 +42,7 @@ class Menu {
 };
 
 } // namespace tt
+
+std::istream& operator>>(std::istream& is, tt::Menu& menu);
 
 #endif
