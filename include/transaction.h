@@ -8,23 +8,38 @@ namespace tt {
 class Transaction {
   private:
     unsigned int id;
+    unsigned int last_id;
     std::string name;
-    float amount;
+    double amount;
     std::string date_created;
 
   public:
-    Transaction(unsigned int, std::string, float);
+    Transaction();
+    Transaction(const unsigned int&);
+    Transaction(const unsigned int&, const std::string&, const double&);
+    Transaction(const unsigned int&, const std::string&, const double&, const std::string&);
 
     // Getters
-    inline int get_id() const { return id; }
-    inline std::string get_name() const { return name; }
-    inline float get_amount() const { return amount; }
-    inline std::string get_date() const { return date_created; }
+    int get_id() const { return id; }
+    int get_last_id() const { return last_id; };
+    std::string get_name() const { return name; };
+    float get_amount() const { return amount; };
+    std::string get_date() const { return date_created; };
+
+
+    // Setters
+    Transaction& set_id(const unsigned int& i) { id = i; return *this; };
+    Transaction& set_name(const std::string& s) { name = s; return *this; };
+    Transaction& set_amount(const double& a) { amount = a; return *this; };
+    Transaction& set_date(const std::string& d) { date_created = d; return *this; };
 
     // Methods
     void print();
 };
 
 } // namespace tt
+
+std::ostream& operator<<(std::ostream&, const tt::Transaction&);
+std::istream& operator>>(std::istream&, tt::Transaction&);
 
 #endif
