@@ -12,11 +12,11 @@
  */
 tt::Loader::Loader() { }
 
-tt::Loader::Loader(std::vector<tt::Transaction>& trns) {
+tt::Loader::Loader(std::vector<tt::Transaction> &trns) {
   this->trns = trns;
 }
 
-void tt::Loader::parse(std::fstream& fs) {
+void tt::Loader::parse(std::fstream &fs) {
   std::string tmp_id, name, tmp_amt, date, ln;
   int i = 1;
   while (fs.good()) {
@@ -43,7 +43,7 @@ void tt::Loader::parse(std::fstream& fs) {
   }
 }
 
-bool tt::Loader::load_file(const std::string& name) {
+bool tt::Loader::load_file(const std::string &name) {
   std::fstream fs(name, std::fstream::in | std::fstream::out);
 
   if (!fs)

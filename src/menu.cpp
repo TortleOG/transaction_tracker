@@ -15,7 +15,7 @@ tt::Menu::Menu() { }
  * -> title | string
  * Menu separator is defaulted to '='.
  */
-tt::Menu::Menu(const std::string& title) {
+tt::Menu::Menu(const std::string &title) {
   this->title = title;
   this->sep = std::string(title.size(), '=');
 }
@@ -26,7 +26,7 @@ tt::Menu::Menu(const std::string& title) {
  * -> title | string
  * -> separator | char
  */
-tt::Menu::Menu(const std::string& title, const char& sep) {
+tt::Menu::Menu(const std::string &title, const char &sep) {
   this->title = title;
   this->sep = (title.size(), sep);
 }
@@ -53,7 +53,7 @@ void tt::Menu::print() {
  * (a) Item Name
  * Returns a refernece to this class to allow method chaining.
  */
-tt::Menu& tt::Menu::add(const std::string& name) {
+tt::Menu& tt::Menu::add(const std::string &name) {
   return this->add(name, nullptr);
 }
 
@@ -67,14 +67,14 @@ tt::Menu& tt::Menu::add(const std::string& name) {
  * Second parameter is a callback that will be called when this item is selected.
  * The callback takes no parameters and must return void.
  */
-tt::Menu& tt::Menu::add(const std::string& name, const std::function<void()>& cb) {
+tt::Menu& tt::Menu::add(const std::string &name, const std::function<void()> &cb) {
   menu_opt opt { this->last_sel, name, cb };
   this->opts.push_back(opt);
   this->last_sel++;
   return *this;
 }
 
-std::istream& operator>>(std::istream& is, tt::Menu& menu) {
+std::istream& operator>>(std::istream &is, tt::Menu &menu) {
   char c;
   bool exit_state = false;
   while (!exit_state) {
