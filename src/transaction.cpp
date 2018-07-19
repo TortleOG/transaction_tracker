@@ -13,7 +13,7 @@
  */
 tt::Transaction::Transaction() { }
 
-tt::Transaction::Transaction(const unsigned int &last_id) {
+tt::Transaction::Transaction(const unsigned &last_id) {
   this->last_id = last_id;
 }
 
@@ -24,7 +24,7 @@ tt::Transaction::Transaction(const unsigned int &last_id) {
  * The second parameter is a string which is the name of the transaction.
  * The last parameter is a float for the dollar amount of the transaction.
  */
-tt::Transaction::Transaction(const unsigned int &id, const std::string &name, const double &amount) {
+tt::Transaction::Transaction(const unsigned &id, const std::string &name, const double &amount) {
   this->id = id;
   this->name = name;
   this->amount = amount;
@@ -32,7 +32,7 @@ tt::Transaction::Transaction(const unsigned int &id, const std::string &name, co
   this->last_id = id - 1;
 }
 
-tt::Transaction::Transaction(const unsigned int &id, const std::string &name, const double &amount, const std::string &date)
+tt::Transaction::Transaction(const unsigned &id, const std::string &name, const double &amount, const std::string &date)
   : Transaction(id, name, amount) {
   this->date_created = date;
 }

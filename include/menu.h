@@ -16,6 +16,7 @@ struct menu_opt {
 
 class Menu {
   private:
+    char csep;
     std::string sep;
     std::string title;
     char last_sel = 'a';
@@ -27,13 +28,15 @@ class Menu {
     Menu(const std::string&, const char&);
 
     // Getters
-    inline std::string get_sep() const { return sep; }
-    inline std::string get_title() const { return title; }
-    inline std::vector<menu_opt> get_opts() const { return opts; }
+    char get_csep() const { return csep; }
+    std::string get_sep() const { return sep; }
+    std::string get_title() const { return title; }
+    std::vector<menu_opt> get_opts() const { return opts; }
 
     // Setters
-    Menu& set_sep(const char& c) { sep = std::string(title.size(), c); return *this; };
-    Menu& set_title(const std::string& t) { title = t; return *this; };
+    Menu& set_csep(const char &c) { csep = c; return *this; }
+    Menu& set_sep(const char &c) { sep = std::string(title.size(), c); return *this; }
+    Menu& set_title(const std::string &t) { title = t; return *this; }
 
     // Methods
     void print();

@@ -17,6 +17,7 @@ tt::Menu::Menu() { }
  */
 tt::Menu::Menu(const std::string &title) {
   this->title = title;
+  this->csep = '=';
   this->sep = std::string(title.size(), '=');
 }
 
@@ -28,6 +29,7 @@ tt::Menu::Menu(const std::string &title) {
  */
 tt::Menu::Menu(const std::string &title, const char &sep) {
   this->title = title;
+  this->csep = sep;
   this->sep = (title.size(), sep);
 }
 
@@ -82,7 +84,7 @@ std::istream& operator>>(std::istream &is, tt::Menu &menu) {
     if (std::cin >> c) {
       for (const auto& opt : menu.get_opts()) {
         if (c == opt.sel && opt.cb) {
-          std::cout << '\n' << opt.name << '\n' << menu.get_sep() << '\n';
+          std::cout << '\n' << opt.name << '\n' << std::string(opt.name.size(), menu.get_csep()) << '\n';
           opt.cb();
         }
         else if (c == menu.get_opts().back().sel) {

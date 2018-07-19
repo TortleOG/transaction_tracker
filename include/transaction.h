@@ -7,17 +7,17 @@ namespace tt {
 
 class Transaction {
   private:
-    unsigned int id;
-    unsigned int last_id;
+    unsigned id;
+    unsigned last_id;
     std::string name;
     double amount;
     std::string date_created;
 
   public:
     Transaction();
-    Transaction(const unsigned int&);
-    Transaction(const unsigned int&, const std::string&, const double&);
-    Transaction(const unsigned int&, const std::string&, const double&, const std::string&);
+    Transaction(const unsigned&);
+    Transaction(const unsigned&, const std::string&, const double&);
+    Transaction(const unsigned&, const std::string&, const double&, const std::string&);
 
     // Getters
     int get_id() const { return id; }
@@ -28,10 +28,10 @@ class Transaction {
 
 
     // Setters
-    Transaction& set_id(const unsigned int& i) { id = i; return *this; };
-    Transaction& set_name(const std::string& s) { name = s; return *this; };
-    Transaction& set_amount(const double& a) { amount = a; return *this; };
-    Transaction& set_date(const std::string& d) { date_created = d; return *this; };
+    Transaction& set_id(const unsigned &i) { id = i; return *this; };
+    Transaction& set_name(const std::string &s) { name = s; return *this; };
+    Transaction& set_amount(const double &a) { amount = a; return *this; };
+    Transaction& set_date(const std::string &d) { date_created = d; return *this; };
 
     // Methods
     void print();

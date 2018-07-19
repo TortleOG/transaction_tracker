@@ -10,6 +10,8 @@ int main() {
   std::vector<tt::Transaction> trns;
   tt::Loader loader { trns };
 
+  std::cout << sizeof(tt::Menu) << "\n";
+
   std::cout << "Loading transactions...\n";
 
   try {
@@ -33,7 +35,7 @@ int main() {
       }
     })
     .add("Add transaction", [&]() {
-      unsigned int last_id = trns.back().get_id();
+      unsigned last_id = trns.back().get_id();
       tt::Transaction t { last_id };
       std::cin >> t;
       trns.push_back(t);
