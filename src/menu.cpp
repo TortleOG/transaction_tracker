@@ -1,5 +1,7 @@
 #include "menu.h"
 
+#include <cctype>
+
 #include <string>
 #include <iostream>
 #include <functional>
@@ -77,19 +79,31 @@ tt::Menu& tt::Menu::add(const std::string &name, const std::function<void()> &cb
 }
 
 std::istream& operator>>(std::istream &is, tt::Menu &menu) {
+  std::string tmp;
   char c;
   bool exit_state = false;
+
   while (!exit_state) {
     std::cout << "\nSelect a menu option: ";
-    if (std::cin >> c) {
+    is >> tmp;
+
+    if (!is.good()) {
+      is.clear();
+      exit_state = true;
+    }
+    else if (tmp == "quit")
+      exit_state = true;
+    else if (tmp.size() != 1)
+      continue;
+    else {
+      c = tolower(tmp[0]);
       for (const auto& opt : menu.get_opts()) {
         if (c == opt.sel && opt.cb) {
           std::cout << '\n' << opt.name << '\n' << std::string(opt.name.size(), menu.get_csep()) << '\n';
           opt.cb();
         }
-        else if (c == menu.get_opts().back().sel) {
+        else if (c == menu.get_opts().back().sel)
           exit_state = true;
-        }
       }
     }
   }
