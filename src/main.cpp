@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <iomanip>
 #include <fstream>
 
 #include "menu.h"
@@ -9,8 +10,6 @@
 int main() {
   std::vector<tt::Transaction> trns;
   tt::Loader loader { trns };
-
-  std::cout << sizeof(tt::Menu) << "\n";
 
   std::cout << "Loading transactions...\n";
 
@@ -29,23 +28,42 @@ int main() {
 
   menu
     .add("View transactions", [&]() {
-      std::cout << "ID | NAME | AMOUNT | DATE\n";
-      for (const auto& trn : trns) {
-        std::cout << trn << "\n";
+      const auto oldp = std::cout.precision();
+      std::cout << std::fixed << std::setprecision(2);
+
+      for (auto& trn : trns) {
+        std::cout << trn << '\n';
       }
+
+      std::cout << std::defaultfloat << std::setprecision(oldp);
     })
     .add("Add transaction", [&]() {
       unsigned last_id = trns.back().get_id();
+
       tt::Transaction t { last_id };
       std::cin >> t;
-      trns.push_back(t);
+
+      if (!std::cin.good())
+        std::cin.clear();
+      else
+        trns.push_back(t);
     })
     .add("Remove last transaction", [&]() {
+      if (trns.empty()) {
+        std::cout << "There are no transactions to remove.\n";
+        return;
+      }
+
       std::cout << "Are you sure you want to remove this transaction? (y/n) ";
       char c;
       std::cin >> c;
-      if (c == 'y') trns.pop_back();
-      else if (c != 'n') std::cout << "Error: Wrong input. The transaction will not be deleted.\n";
+
+      if (!std::cin.good())
+        std::cin.clear();
+      else if (c == 'y')
+        trns.pop_back();
+      else if (c != 'n')
+        std::cout << "Error: Wrong input. The transaction will not be deleted.\n";
     })
     .add("View net gain/loss", []() {
       std::cout << "menu4\n";
@@ -55,6 +73,9 @@ int main() {
   menu.print();
 
   std::cin >> menu;
+
+  if (!std::cin.good())
+    std::cin.clear();
 
   return 0;
 }
