@@ -1,8 +1,8 @@
 #include "transaction.h"
 
 #include <string>
-#include <thread>
 #include <chrono>
+#include <iomanip>
 #include <iostream>
 
 
@@ -49,8 +49,10 @@ void tt::Transaction::print() {
 }
 
 std::ostream& operator<<(std::ostream &os, const tt::Transaction &t) {
-  os << t.get_id() << " " << t.get_name() << " "
-    << t.get_amount() << " " << t.get_date();
+  os
+    << t.get_id() << " "
+    << std::left << std::setw(10) << t.get_name() << " "
+    << std::right << t.get_amount() << " " << t.get_date();
 
   return os;
 }
@@ -65,13 +67,15 @@ std::istream& operator>>(std::istream &is, tt::Transaction &t) {
   std::cout << "Amount: ";
   is >> amt;
 
-  std::cout << "Date (MM/DD/YYYY or 'today'): ";
+  std::cout << "Date (MM/DD/YYYY or 'today', 't'): ";
   is >> date;
 
-  if (date == "today")
+  if (date == "today" || date == "t")
     date = tt::util::create_date();
 
-  t.set_id(t.get_last_id() + 1).set_name(name).set_amount(amt).set_date(date);
+  if (is) {
+    t.set_id(t.get_last_id() + 1).set_name(name).set_amount(amt).set_date(date);
+  }
 
   return is;
 }
