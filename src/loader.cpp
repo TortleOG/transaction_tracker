@@ -21,9 +21,9 @@ void tt::Loader::parse(std::fstream &fs) {
   int i = 1;
   while (fs.good()) {
     std::getline(fs, ln, '\n');
-    if (ln.size() == 0 && i == 5 ) {
+    if (ln.empty() && i == 5 ) {
       i = 1;
-    } else if (ln.size() == 0 && i != 5) {
+    } else if (ln.empty() && i != 5) {
       throw std::runtime_error("Incorrectly formed transaction in transaction file.\n");
     } else {
       if (i == 1) tmp_id = ln;
@@ -44,7 +44,7 @@ void tt::Loader::parse(std::fstream &fs) {
 }
 
 bool tt::Loader::load_file(const std::string &name) {
-  std::fstream fs(name, std::fstream::in | std::fstream::out);
+  std::fstream fs(name, std::fstream::in);
 
   if (!fs)
     throw std::runtime_error("No file found with the name '" + name + "'.\n");
