@@ -23,7 +23,7 @@ class Transaction {
     int get_id() const { return id; }
     int get_last_id() const { return last_id; };
     std::string get_name() const { return name; };
-    float get_amount() const { return amount; };
+    double get_amount() const { return amount; };
     std::string get_date() const { return date_created; };
 
 
